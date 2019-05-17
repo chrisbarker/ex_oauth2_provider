@@ -108,12 +108,12 @@ defmodule ExOauth2Provider.Config do
     do: get(config, :revoke_refresh_token_on_use, false)
 
   # Forces the usage of the HTTPS protocol in non-native redirect uris
-  # (enabled by default in non-development environments). OAuth2
+  # (enabled by default). OAuth2
   # delegates security in communication to the HTTPS protocol so it is
   # wise to keep this enabled.
   @spec force_ssl_in_redirect_uri?(keyword()) :: boolean()
   def force_ssl_in_redirect_uri?(config),
-    do: get(config, :force_ssl_in_redirect_uri, Mix.env != :dev)
+    do: get(config, :force_ssl_in_redirect_uri, true)
 
   # Use a custom access token generator
   @spec access_token_generator(keyword()) :: {atom(), atom()} | nil
